@@ -10,13 +10,13 @@ import java.time.Instant;
 @Getter
 @Setter
 @Entity
-@Table(name = "products")
-public class Product {
+@Table(name = "books")
+public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "product_id", nullable = false)
-    private Long productId;
+    @Column(name = "book_id", nullable = false)
+    private Long bookId;
 
     @Column(name = "name", nullable = false)
     private String name;
