@@ -49,7 +49,7 @@ function Home() {
   }
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-8">
+    <div className="max-w-6xl mx-auto px-6 py-8 dark:bg-darkbg">
       <PageHeading title="Welcome to AlephBooks Store">
         <p className="page-heading-paragraph">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
