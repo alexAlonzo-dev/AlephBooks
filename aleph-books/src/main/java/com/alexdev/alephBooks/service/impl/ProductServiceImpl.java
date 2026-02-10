@@ -1,8 +1,8 @@
 package com.alexdev.alephBooks.service.impl;
 
 import com.alexdev.alephBooks.dto.ProductDto;
-import com.alexdev.alephBooks.entity.Product;
-import com.alexdev.alephBooks.repository.ProductRepository;
+import com.alexdev.alephBooks.entity.Book;
+import com.alexdev.alephBooks.repository.BookRepository;
 import com.alexdev.alephBooks.service.IProductService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +13,10 @@ import java.util.stream.Collectors;
 
 @Service
 public class ProductServiceImpl implements IProductService {
-    private final ProductRepository productRepository;
+    private final BookRepository productRepository;
 
     @Autowired
-    public ProductServiceImpl(ProductRepository productRepository) {
+    public ProductServiceImpl(BookRepository productRepository) {
         this.productRepository = productRepository;
     }
 
@@ -25,7 +25,7 @@ public class ProductServiceImpl implements IProductService {
         return productRepository.findAll().stream().map(this::transformToDTO).collect(Collectors.toList());
     }
 
-    private ProductDto transformToDTO(Product product) {
+    private ProductDto transformToDTO(Book product) {
         ProductDto productDto = new ProductDto();
         BeanUtils.copyProperties(product, productDto);
         return productDto;

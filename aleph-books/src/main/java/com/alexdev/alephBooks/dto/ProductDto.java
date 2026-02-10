@@ -1,8 +1,11 @@
 package com.alexdev.alephBooks.dto;
 
+import lombok.Data;
+
 import java.math.BigDecimal;
 import java.time.Instant;
 
+@Data
 public class ProductDto {
 
     private Long productId;
