@@ -6,9 +6,9 @@ import java.math.BigDecimal;
 import java.time.Instant;
 
 @Data
-public class ProductDto {
+public class BookDto {
 
-    private Long productId;
+    private Long bookId;
     private String name;
     private String description;
     private BigDecimal price;
