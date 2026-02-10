@@ -1,27 +1,26 @@
 import { useState, useEffect } from "react";
 import PageHeading from "./PageHeading";
-import ProductListings from "./ProductListings";
+import BookListings from "./BookListings.jsx";
 import apiClient from "../api/apiClient.js";
 
 function Home() {
-  const [products, setProducts] = useState([]);
+  const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetchProducts();
+    fetchBooks();
   }, []);
 
-  const fetchProducts = async () => {
+  const fetchBooks = async () => {
     try {
       setLoading(true);
-      const response = await apiClient.get("/products");
-      setProducts(response.data);
-      console.log(response.data);
+      const response = await apiClient.get("/books");
+      setBooks(response.data);
     } catch (error) {
       setError(
         error.response?.data?.message ||
-        "Failed to fetch products, Try Again"
+        "Failed to fetch books, Try Again"
       );
     } finally {
       setLoading(false);
@@ -32,7 +31,7 @@ function Home() {
     return(
       <div className="flex items-center justify-center min-h-screen">
         <span className="text-xl font-semibold">
-          Loading Products...
+          Loading Books...
         </span>
       </div>
     );
@@ -57,7 +56,7 @@ function Home() {
           nihil quibusdam consequatur et? Libero exercitationem velit quo.
         </p>
       </PageHeading>
-      <ProductListings products={products} />
+      <BookListings books={books} />
     </div>
   );
 }

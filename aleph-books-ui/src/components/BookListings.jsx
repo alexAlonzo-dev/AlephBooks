@@ -1,11 +1,11 @@
 import React, { useState, useMemo } from "react";
-import ProductCard from "./ProductCard";
+import BookCard from "./BookCard";
 import SearchBox from "./SearchBox";
 import Dropdown from "./Dropdown";
 
 const sortList = ["Popularity", "Price Low to High", "Price High to Low"];
 
-function ProductListings({ products }) {
+function BookListings({ books }) {
   const [searchText, setSearchText] = useState("");
   const [selectedSort, setSelectedSort] = useState("Popularity");
 
@@ -17,12 +17,12 @@ function ProductListings({ products }) {
     setSelectedSort(sortType);
   }
 
-  const filteredAndSortedProducts = useMemo(() => {
-    if (!Array.isArray(products)) {
+  const filteredAndSortedbooks = useMemo(() => {
+    if (!Array.isArray(books)) {
       return [];
     }
 
-    let result = products.filter((product) => {
+    let result = books.filter((product) => {
       return (
         product.name.toLowerCase().includes(searchText.toLowerCase()) ||
         product.description.toLowerCase().includes(searchText.toLowerCase())
@@ -44,14 +44,14 @@ function ProductListings({ products }) {
           (a, b) => parseInt(b.popularity) - parseInt(a.popularity),
         );
     }
-  }, [products, searchText, selectedSort]);
+  }, [books, searchText, selectedSort]);
 
   return (
     <div className="max-w-6xl mx-auto">
       <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-12">
         <SearchBox
           label="Search"
-          placeholder="Search Products"
+          placeholder="Search books"
           value={searchText}
           handleSearch={(val) => handleSearchChange(val)}
         />
@@ -63,13 +63,13 @@ function ProductListings({ products }) {
         />
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-8 gap-x-6 py-12">
-        {filteredAndSortedProducts.length > 0 ? (
-          filteredAndSortedProducts.map((product) => (
-            <ProductCard key={product.productId} product={product} />
+        {filteredAndSortedbooks.length > 0 ? (
+          filteredAndSortedbooks.map((book) => (
+            <BookCard key={book.bookId} book={book} />
           ))
         ) : (
           <p className="text-center font-primary font-bold text-lg text-primary dark:text-lighter">
-            No products found
+            No books found
           </p>
         )}
       </div>
@@ -77,4 +77,4 @@ function ProductListings({ products }) {
   );
 }
 
-export default ProductListings;
+export default BookListings;

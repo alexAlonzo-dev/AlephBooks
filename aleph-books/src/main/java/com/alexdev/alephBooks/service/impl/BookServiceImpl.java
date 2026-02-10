@@ -1,6 +1,6 @@
 package com.alexdev.alephBooks.service.impl;
 
-import com.alexdev.alephBooks.dto.ProductDto;
+import com.alexdev.alephBooks.dto.BookDto;
 import com.alexdev.alephBooks.entity.Book;
 import com.alexdev.alephBooks.repository.BookRepository;
 import com.alexdev.alephBooks.service.IProductService;
@@ -21,12 +21,12 @@ public class ProductServiceImpl implements IProductService {
     }
 
     @Override
-    public List<ProductDto> getProducts() {
+    public List<BookDto> getProducts() {
         return productRepository.findAll().stream().map(this::transformToDTO).collect(Collectors.toList());
     }
 
-    private ProductDto transformToDTO(Book product) {
-        ProductDto productDto = new ProductDto();
+    private BookDto transformToDTO(Book product) {
+        BookDto productDto = new BookDto();
         BeanUtils.copyProperties(product, productDto);
         return productDto;
     }

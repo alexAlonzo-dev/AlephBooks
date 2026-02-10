@@ -1,6 +1,6 @@
 package com.alexdev.alephBooks.controller;
 
-import com.alexdev.alephBooks.dto.ProductDto;
+import com.alexdev.alephBooks.dto.BookDto;
 import com.alexdev.alephBooks.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +20,7 @@ public class ProductController {
     }
 
     @GetMapping
-    public List<ProductDto> getProducts() {
+    public List<BookDto> getProducts() {
         return iProductService.getProducts();
     }
 }
