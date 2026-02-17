@@ -9,6 +9,7 @@ import About from './components/About.jsx';
 import Contact from './components/Contact.jsx';
 import Login from './components/Login.jsx';
 import Cart from './components/Cart.jsx';
+import ErrorPage from './components/ErrorPage.jsx';
 
 const routeDefinitions = createRoutesFromElements(
   <Route path="/" element={<App />} errorElement={<ErrorPage />}>
