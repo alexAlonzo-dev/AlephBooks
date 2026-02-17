@@ -26,7 +26,7 @@ export default function About() {
         inspiring.
       </p>
 
-      <h2 className="text-2xl leading-[32px] font-bold text-primary dark:text-light mb-6">
+      <h2 className="text-2xl leading-8 font-bold text-primary dark:text-light mb-6">
         Why Choose Aleph Book?
       </h2>
       <div className="space-y-8">
