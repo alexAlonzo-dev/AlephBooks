@@ -3,7 +3,6 @@
 > Una plataforma de comercio electrónico y comunidad para amantes de los libros.
 
 ![Project Status](https://img.shields.io/badge/status-in%20development-orange)
-![License](https://img.shields.io/badge/license-MIT-blue)
 
 **AlephBooks** es una aplicación Full Stack diseñada para conectar a los lectores con su próxima gran lectura. No solo funciona como una tienda de libros en línea, 
 sino que fomenta la interacción social permitiendo discusiones, reseñas y sugerencias personalizadas por cada título.
