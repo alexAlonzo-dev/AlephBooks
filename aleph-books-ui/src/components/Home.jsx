@@ -1,52 +1,10 @@
-import { useState, useEffect } from "react";
 import PageHeading from "./PageHeading";
 import BookListings from "./BookListings.jsx";
 import apiClient from "../api/apiClient.js";
+import { useLoaderData } from "react-router-dom";
 
 function Home() {
-  const [books, setBooks] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    fetchBooks();
-  }, []);
-
-  const fetchBooks = async () => {
-    try {
-      setLoading(true);
-      const response = await apiClient.get("/books");
-      setBooks(response.data);
-    } catch (error) {
-      setError(
-        error.response?.data?.message ||
-        "Failed to fetch books, Try Again"
-      );
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  if(loading){
-    return(
-      <div className="flex items-center justify-center min-h-screen">
-        <span className="text-xl font-semibold">
-          Loading Books...
-        </span>
-      </div>
-    );
-  }
-
-  if(error){
-    return(
-      <div className="flex items-center justify-center min-h-screen">
-        <span className="text-xl font-semibold text-red-500">
-          Error: {error}
-        </span>
-      </div>
-    );
-  }
-
+  const books = useLoaderData();
   return (
     <div className="max-w-6xl mx-auto px-6 py-8 dark:bg-darkbg">
       <PageHeading title="Welcome to AlephBooks Store">
@@ -62,3 +20,15 @@ function Home() {
 }
 
 export default Home;
+
+export async function booksLoader(){
+  try {
+    const response = await apiClient.get("/books"); 
+    return response.data;
+  } catch (error) {
+    throw new Response(
+      error.message || "Failed to fetch books. Please try again.",
+      { status: error.status || 500 },
+    );
+  }
+}
